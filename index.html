@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
+        <!-- アコーディオン -->
         <div class="container">
             <h2 class="title">アコーディオンパターン比較</h2>
 
@@ -103,88 +104,119 @@
             </div>
         </div>
 
+        <!-- ドロップダウン -->
         <div class="container">
-            <h2 class="title">カードリストの高さを揃える</h2>
-            <ul class="card-list">
-                <li class="card-item">
-                    <div class="card-image">
-                        <img
-                            src="https://placehold.jp/150x150.png"
-                            alt="カード1"
-                        />
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">カード1</h3>
-                        <p class="card-text">カード1のテキスト</p>
-                    </div>
-                </li>
-            </ul>
-            <ul class="card-list">
-                <li class="card-item">
-                    <div class="card-image">
-                        <img
-                            src="https://placehold.jp/150x150.png"
-                            alt="カード1"
-                        />
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">カード1</h3>
-                        <p class="card-text">カード1のテキスト</p>
-                    </div>
-                </li>
-            </ul>
-            <ul class="card-list">
-                <li class="card-item">
-                    <div class="card-image">
-                        <img
-                            src="https://placehold.jp/150x150.png"
-                            alt="カード1"
-                        />
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">カード1</h3>
-                        <p class="card-text">カード1のテキスト</p>
-                    </div>
-                </li>
-            </ul>
-            <ul class="card-list">
-                <li class="card-item">
-                    <div class="card-image">
-                        <img
-                            src="https://placehold.jp/150x150.png"
-                            alt="カード1"
-                        />
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">カード1</h3>
-                        <p class="card-text">カード1のテキスト</p>
-                    </div>
-                </li>
-            </ul>
-            <ul class="card-list">
-                <li class="card-item">
-                    <div class="card-image">
-                        <img
-                            src="https://placehold.jp/150x150.png"
-                            alt="カード1"
-                        />
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">カード1</h3>
-                        <p class="card-text">カード1のテキスト</p>
-                    </div>
-                </li>
-            </ul>
+            <h2 class="title">
+                ヘッダーナビゲーション（ホバーでドロップダウン）
+            </h2>
+            <p>
+                ヘッダーのナビゲーションメニューにマウスをホバーすると、ドロップダウンメニューが表示されます。
+            </p>
+            <header class="header">
+                <div class="container">
+                    <nav class="navbar">
+                        <div class="nav-brand">
+                            <a href="#" class="brand-link">MySite</a>
+                        </div>
+
+                        <ul class="nav-menu">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">ホーム</a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-trigger">
+                                    サービス
+                                    <span class="dropdown-arrow">▼</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="#" class="dropdown-item">
+                                            Web制作
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown-item">
+                                            アプリ開発
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown-item">
+                                            コンサルティング
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown-item">
+                                            サポート
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-trigger">
+                                    会社概要
+                                    <span class="dropdown-arrow">▼</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="#" class="dropdown-item">
+                                            企業理念
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown-item">
+                                            代表メッセージ
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown-item">
+                                            沿革
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown-item">
+                                            アクセス
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-trigger">
+                                    お客様サポート
+                                    <span class="dropdown-arrow">▼</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="#" class="dropdown-item">
+                                            よくある質問
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown-item">
+                                            お問い合わせ
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown-item">
+                                            資料ダウンロード
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown-item">
+                                            お客様の声
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
         </div>
-        <div class="container">
-            <h2 class="title">アコーディオンパターン比較</h2>
-        </div>
-        <div class="container">
-            <h2 class="title">アコーディオンパターン比較</h2>
-        </div>
-        <div class="container">
-            <h2 class="title">アコーディオンパターン比較</h2>
-        </div>
+
+        <div class="container"></div>
     </body>
     <script src="script.js"></script>
 </html>
