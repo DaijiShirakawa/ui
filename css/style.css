@@ -1,29 +1,82 @@
-/* ========================================
+/*----------------------------------------
    目次
-   ======================================== */
+----------------------------------------*/
 
-/* 1. リセット・基本設定
+/* 1. フォント・基本設定
+
    2. ヘッダー
+
    3. メインコンテンツ
+    3.1 mv
+
    4. フッター
+
    5. トップボタン */
 
 /* ========================================
-   1. リセット・基本設定
+   1. フォント・基本設定
    ======================================== */
 
-/* リセット */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* フォント定義 */
+@font-face {
+    font-family: 'Noto Sans JP';
+    src: url('../fonts/NotoSansJP-Regular.woff2') format('woff2'),
+        url('../fonts/NotoSansJP-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Noto Sans JP';
+    src: url('../fonts/NotoSansJP-Medium.woff2') format('woff2'),
+        url('../fonts/NotoSansJP-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Noto Sans JP';
+    src: url('../fonts/NotoSansJP-Bold.woff2') format('woff2'),
+        url('../fonts/NotoSansJP-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Noto Serif';
+    src: url('../fonts/NotoSerif-Regular.woff2') format('woff2'),
+        url('../fonts/NotoSerif-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Noto Serif';
+    src: url('../fonts/NotoSerif-Medium.woff2') format('woff2'),
+        url('../fonts/NotoSerif-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Noto Serif';
+    src: url('../fonts/NotoSerif-Bold.woff2') format('woff2'),
+        url('../fonts/NotoSerif-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+    font-family: 'Noto Serif', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+    line-height: 1.5;
     color: #333;
-    background-color: #f5f5f5;
+    font-weight: 500;
     min-width: 1140px;
 }
 
@@ -208,13 +261,11 @@ body {
    アコーディオン
 ----------------------------------------*/
 
-.accordion {
-    background: white;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.accordion_section {
+    padding: 150px 0;
 }
 
-.accordion .pattern_section {
+.accordion_section .pattern_section {
     margin-bottom: 40px;
     background: white;
     border-radius: 8px;
@@ -222,7 +273,7 @@ body {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.accordion .pattern_title {
+.accordion_section .pattern_title {
     margin-bottom: 15px;
     color: #2c3e50;
     font-size: 18px;
@@ -231,15 +282,15 @@ body {
 }
 
 /* アコーディオンアイテム */
-.accordion .accordion_item {
+.accordion_section .accordion_item {
     border-bottom: 1px solid #eee;
 }
 
-.accordion .accordion_item:last-child {
+.accordion_section .accordion_item:last-child {
     border-bottom: none;
 }
 
-.accordion .accordion_header {
+.accordion_section .accordion_header {
     background: #f8f9fa;
     padding: 15px;
     cursor: pointer;
@@ -249,66 +300,66 @@ body {
     transition: background-color 0.3s;
 }
 
-.accordion .accordion_header:hover {
+.accordion_section .accordion_header:hover {
     background: #e9ecef;
 }
 
-.accordion .accordion_header .accordion_title {
+.accordion_section .accordion_header .accordion_title {
     margin: 0;
     font-size: 16px;
 }
 
 /* パターン別のスタイル */
-.accordion .accordion_close_others {
+.accordion_section .accordion_close_others {
     border: 2px solid #e74c3c;
 }
 
-.accordion .accordion_close_others .accordion_header {
+.accordion_section .accordion_close_others .accordion_header {
     background: #e74c3c;
     color: white;
 }
 
-.accordion .accordion_close_others .accordion_header:hover {
+.accordion_section .accordion_close_others .accordion_header:hover {
     background: #c0392b;
 }
 
-.accordion .accordion_keep_open {
+.accordion_section .accordion_keep_open {
     border: 2px solid #27ae60;
 }
 
-.accordion .accordion_keep_open .accordion_header {
+.accordion_section .accordion_keep_open .accordion_header {
     background: #27ae60;
     color: white;
 }
 
-.accordion .accordion_keep_open .accordion_header:hover {
+.accordion_section .accordion_keep_open .accordion_header:hover {
     background: #229954;
 }
 
 /* アコーディオンアイコン */
-.accordion .accordion_icon {
+.accordion_section .accordion_icon {
     font-size: 18px;
     transition: transform 0.3s;
 }
 
-.accordion .accordion_item.active .accordion_icon {
+.accordion_section .accordion_item.active .accordion_icon {
     transform: rotate(45deg);
 }
 
 /* アコーディオンコンテンツ */
-.accordion .accordion_content {
+.accordion_section .accordion_content {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s, padding 0.3s;
     padding: 0 15px;
 }
 
-.accordion .accordion_item.active .accordion_content {
+.accordion_section .accordion_item.active .accordion_content {
     max-height: 200px;
     padding: 15px;
 }
 
-.accordion .accordion_content .accordion_text {
+.accordion_section .accordion_content .accordion_text {
     margin: 0;
     color: #666;
 }
@@ -348,18 +399,20 @@ body {
 ----------------------------------------*/
 
 .swiper_section {
-    margin: 2rem 0;
-    padding: 2rem;
+    padding: 150px 0;
     background: white;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.swiper_wrap {
+    position: relative;
 }
 
 .swiper {
     width: 100%;
     height: 400px;
     border-radius: 8px;
-    overflow: hidden;
 }
 
 .swiper-slide img {
@@ -368,17 +421,72 @@ body {
     object-fit: cover;
 }
 
-.swiper-pagination-bullet {
-    background: #333;
+.swiper_section .swiper_wrap .swiper-pagination {
+    bottom: -50px;
 }
 
-.swiper-pagination-bullet-active {
-    background: #df762e;
+.swiper_section .swiper_wrap .swiper-pagination .swiper-pagination-bullet {
+    background: #ccc;
+    opacity: 1;
+    width: 10px;
+    height: 10px;
+    margin: 0 10px;
+}
+
+.swiper_section
+    .swiper_wrap
+    .swiper-pagination
+    .swiper-pagination-bullet-active {
+    background: #133562;
 }
 
 .swiper-button-next,
 .swiper-button-prev {
-    color: #df762e;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #133562;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+    transition: all 0.3s ease;
+}
+
+.swiper-button-prev {
+    left: -80px;
+}
+
+.swiper-button-next {
+    right: -80px;
+}
+
+.swiper-button-next .button_arrow_svg,
+.swiper-button-prev .button_arrow_svg {
+    width: 15px;
+    height: 12px;
+    stroke: #fff;
+    transition: all 0.3s ease;
+}
+
+.swiper-button-prev .button_arrow_svg {
+    transform: rotate(180deg);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    display: none;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    background: #fff;
+    border: 2px solid #133562;
+}
+
+.swiper-button-prev:hover .button_arrow_svg,
+.swiper-button-next:hover .button_arrow_svg {
+    stroke: #133562;
 }
 
 /*----------------------------------------
@@ -386,11 +494,13 @@ body {
 ----------------------------------------*/
 
 .slick_section {
-    margin: 2rem 0;
-    padding: 2rem;
-    background: white;
+    padding: 150px 0;
+    background: #3498db;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.slick_section .wrap {
+    position: relative;
 }
 
 .slick_slider {
@@ -423,6 +533,109 @@ body {
 .slick-prev:before,
 .slick-next:before {
     color: #df762e;
+}
+
+.slick_button_prev,
+.slick_button_next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+    border: 2px solid #133562;
+}
+
+.slick_button_prev {
+    left: -80px;
+}
+
+.slick_button_next {
+    right: -80px;
+}
+
+.slick_button_prev .button_arrow_svg,
+.slick_button_next .button_arrow_svg {
+    width: 15px;
+    height: 12px;
+    stroke: #333;
+    transition: all 0.3s ease;
+}
+
+.slick_button_prev .button_arrow_svg {
+    transform: rotate(180deg);
+}
+
+.slick_button_prev:before,
+.slick_button_next:before {
+    display: none;
+}
+
+.slick_button_prev:hover,
+.slick_button_next:hover {
+    background: #133562;
+}
+
+.slick_button_prev:hover .button_arrow_svg,
+.slick_button_next:hover .button_arrow_svg {
+    stroke: #fff;
+}
+
+.slick_button_prev:disabled,
+.slick_button_next:disabled {
+    background: rgba(255, 255, 255, 0.3);
+    cursor: not-allowed;
+    transform: translateY(-50%);
+}
+
+.button_arrow_svg {
+    stroke: #333;
+    transition: stroke 0.3s ease;
+}
+
+/*----------------------------------------
+   slickスライダー　ページネーション（自動生成）
+----------------------------------------*/
+
+.slick-dots {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+}
+
+.slick-dots li {
+    display: inline-block;
+}
+
+.slick-dots li button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0;
+    padding: 0;
+}
+
+.slick-dots li.slick-active button {
+    background: #133562;
 }
 
 /*----------------------------------------

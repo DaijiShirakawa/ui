@@ -116,10 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const swiper = new Swiper('.swiper', {
         // オプション
         loop: true,
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-        },
+        autoplay: false,
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
@@ -138,13 +135,13 @@ $(document).ready(function() {
     $('.slick_slider').slick({
         autoplay: true,
         autoplaySpeed: 3000,
-        dots: true,
+        dots: true, // デフォルトのドットを有効化
         infinite: true,
         speed: 600,
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: true,
-        prevArrow: '<button type="button" class="slick-prev">Previous</button>',
-        nextArrow: '<button type="button" class="slick-next">Next</button>',
+        prevArrow: '.slick_button_prev', // Swiperスタイルのボタンを指定
+        nextArrow: '.slick_button_next', // Swiperスタイルのボタンを指定
     });
 });
