@@ -339,6 +339,92 @@ body {
     background-repeat: no-repeat;
 }
 
+/* ========================================
+   スライダー
+   ======================================== */
+
+/*----------------------------------------
+   Swiper スライダー
+----------------------------------------*/
+
+.swiper_section {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.swiper {
+    width: 100%;
+    height: 400px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.swiper-pagination-bullet {
+    background: #333;
+}
+
+.swiper-pagination-bullet-active {
+    background: #df762e;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #df762e;
+}
+
+/*----------------------------------------
+   Slick スライダー
+----------------------------------------*/
+
+.slick_section {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.slick_slider {
+    width: 100%;
+    height: 400px;
+}
+
+.slick_item img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.slick-dots li button:before {
+    color: #df762e;
+    font-size: 12px;
+}
+
+.slick-dots li.slick-active button:before {
+    color: #df762e;
+}
+
+.slick-prev,
+.slick-next {
+    color: #df762e;
+    font-size: 20px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    color: #df762e;
+}
+
 /*----------------------------------------
    固定背景画像セクション
 ----------------------------------------*/
@@ -397,29 +483,65 @@ body {
     z-index: 1000;
 }
 
-.button_section .button_link {
-    display: block;
+.button_section .button_wrap {
+}
+
+.button_section .button {
     width: 300px;
     height: 60px;
     line-height: 60px;
     text-align: center;
     border-radius: 50px;
-    color: #333;
-    text-decoration: none;
+    color: #133562;
+    border: 2px solid #133562;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     margin: 0 auto;
     position: relative;
-    border: 2px solid #333;
-    transition: all 0.3s ease;
-    background-image: url('../img/icon_button.svg');
-    background-size: 30px 30px;
-    background-position: left 15px center;
-    background-repeat: no-repeat;
-    padding-left: 60px;
 }
 
-.button_section .button_link:hover {
-    background-color: #333;
+.button_section .button_text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.button_section .button_arrow {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #133562;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+
+.button_section .button_arrow_svg {
+    width: 15px;
+    height: 12px;
+    stroke: #fff;
+    transition: all 0.3s ease;
+}
+
+.button_section .button:hover {
+    background: #133562;
     color: #fff;
+}
+
+.button_section .button:hover .button_arrow {
+    background: #fff;
+}
+
+.button_section .button:hover .button_arrow_svg {
+    stroke: #133562;
 }
 
 /* ========================================

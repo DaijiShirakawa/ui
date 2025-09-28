@@ -8,7 +8,13 @@
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/destyle.css@3.0.2/destyle.css"
         />
-        <link rel="stylesheet" href="style.css" />
+        <!-- Swiper CSS -->
+        <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+        <!-- Slick CSS -->
+        <link rel="stylesheet" href="css/slick.css" />
+        <link rel="stylesheet" href="css/slick-theme.css" />
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="css/style.css" />
     </head>
     <body>
         <!-- ヘッダー -->
@@ -261,12 +267,96 @@
                 </svg>
             </section>
 
+            <!-- Swiper スライダー -->
+            <section class="swiper_section">
+                <h2 class="title">Swiper スライダー</h2>
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="img/yokohama.jpg" alt="スライド1" />
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="img/yokohama.jpg" alt="スライド2" />
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="img/yokohama.jpg" alt="スライド3" />
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </section>
+
+            <!-- Slick スライダー -->
+            <section class="slick_section">
+                <h2 class="title">Slick スライダー</h2>
+                <div class="slick_slider">
+                    <div class="slick_item">
+                        <img src="img/yokohama.jpg" alt="スライド1" />
+                    </div>
+                    <div class="slick_item">
+                        <img src="img/yokohama.jpg" alt="スライド2" />
+                    </div>
+                    <div class="slick_item">
+                        <img src="img/yokohama.jpg" alt="スライド3" />
+                    </div>
+                </div>
+            </section>
+
             <!-- 固定背景画像 -->
             <section class="fixed_image">
                 <h2 class="title">固定背景画像</h2>
                 <div class="image image_1"></div>
                 <div class="image image_2"></div>
                 <div class="image image_3"></div>
+            </section>
+
+            <!-- ボタン -->
+            <section class="button_section">
+                <h2 class="title">ボタン</h2>
+                <div class="button_wrap">
+                    <a href="#" class="button">
+                        <p class="button_text">ボタン</p>
+                        <div class="button_arrow">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="17"
+                                height="14.828"
+                                viewBox="0 0 17 14.828"
+                                class="button_arrow_svg"
+                            >
+                                <g
+                                    id="グループ_73"
+                                    data-name="グループ 73"
+                                    transform="translate(-836.56 -1481.226)"
+                                >
+                                    <path
+                                        id="パス_14"
+                                        data-name="パス 14"
+                                        d="M844.458,1483.64l6,6-6,6"
+                                        transform="translate(2.101 -1)"
+                                        fill="none"
+                                        stroke=""
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                    />
+                                    <path
+                                        id="パス_22"
+                                        data-name="パス 22"
+                                        d="M104.864,1989.505h15"
+                                        transform="translate(732.696 -500.865)"
+                                        fill="none"
+                                        stroke=""
+                                        stroke-linecap="round"
+                                        stroke-width="2"
+                                    />
+                                </g>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
             </section>
         </main>
 
@@ -280,5 +370,12 @@
             <a href="#" class="top_button_link">TOP</a>
         </button>
     </body>
-    <script src="script.js"></script>
+    <!-- jQuery (Slick用) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="js/swiper-bundle.min.js"></script>
+    <!-- Slick JS -->
+    <script src="js/slick.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
 </html>
