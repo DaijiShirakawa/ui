@@ -11,212 +11,274 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <!-- アコーディオン -->
-        <div class="container">
-            <h2 class="title">アコーディオンパターン比較</h2>
-
-            <!-- パターン1: 他のを閉じる -->
-            <div class="pattern-section">
-                <h3 class="pattern-title">
-                    パターン1: 他のを閉じる（一度に1つだけ開く）
-                </h3>
-                <div class="accordion accordion-close-others">
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h4 class="accordion-title">セクション 1</h4>
-                            <span class="accordion-icon">+</span>
-                        </div>
-                        <div class="accordion-content">
-                            <p class="accordion-text">
-                                他のセクションをクリックすると閉じます。
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h4 class="accordion-title">セクション 2</h4>
-                            <span class="accordion-icon">+</span>
-                        </div>
-                        <div class="accordion-content">
-                            <p class="accordion-text">
-                                一度に1つのセクションのみ開きます。
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h4 class="accordion-title">セクション 3</h4>
-                            <span class="accordion-icon">+</span>
-                        </div>
-                        <div class="accordion-content">
-                            <p class="accordion-text">
-                                新しいセクションを開くと前のセクションが閉じます。
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- パターン2: 他のを閉じない -->
-            <div class="pattern-section">
-                <h3 class="pattern-title">
-                    パターン2: 他のを閉じない（複数同時に開く）
-                </h3>
-                <div class="accordion accordion-keep-open">
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h4 class="accordion-title">セクション 1</h4>
-                            <span class="accordion-icon">+</span>
-                        </div>
-                        <div class="accordion-content">
-                            <p class="accordion-text">
-                                他のセクションをクリックしても閉じません。
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h4 class="accordion-title">セクション 2</h4>
-                            <span class="accordion-icon">+</span>
-                        </div>
-                        <div class="accordion-content">
-                            <p class="accordion-text">
-                                複数のセクションを同時に開けます。
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h4 class="accordion-title">セクション 3</h4>
-                            <span class="accordion-icon">+</span>
-                        </div>
-                        <div class="accordion-content">
-                            <p class="accordion-text">
-                                各セクションは独立して開閉します。
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        <!-- ヘッダー -->
         <!-- ドロップダウン -->
-        <div class="container">
-            <h2 class="title">
-                ヘッダーナビゲーション（ホバーでドロップダウン）
-            </h2>
-            <p>
-                ヘッダーのナビゲーションメニューにマウスをホバーすると、ドロップダウンメニューが表示されます。
-            </p>
-            <header class="header">
-                <div class="container">
-                    <nav class="navbar">
-                        <div class="nav-brand">
-                            <a href="#" class="brand-link">MySite</a>
-                        </div>
+        <header class="header">
+            <nav class="navbar">
+                <div class="nav_brand">
+                    <a href="#" class="brand_link">MySite</a>
+                </div>
 
-                        <ul class="nav-menu">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">ホーム</a>
+                <ul class="nav_menu">
+                    <li class="nav_item">
+                        <a href="#" class="nav_link">ホーム</a>
+                    </li>
+
+                    <li class="nav_item dropdown">
+                        <a href="#" class="nav_link dropdown_trigger">
+                            サービス
+                            <span class="dropdown_arrow">▼</span>
+                        </a>
+                        <ul class="dropdown_menu">
+                            <li>
+                                <a href="#" class="dropdown_item">Web制作</a>
                             </li>
-
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-trigger">
-                                    サービス
-                                    <span class="dropdown-arrow">▼</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="#" class="dropdown-item">
-                                            Web制作
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="dropdown-item">
-                                            アプリ開発
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="dropdown-item">
-                                            コンサルティング
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="dropdown-item">
-                                            サポート
-                                        </a>
-                                    </li>
-                                </ul>
+                            <li>
+                                <a href="#" class="dropdown_item">アプリ開発</a>
                             </li>
-
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-trigger">
-                                    会社概要
-                                    <span class="dropdown-arrow">▼</span>
+                            <li>
+                                <a href="#" class="dropdown_item">
+                                    コンサルティング
                                 </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="#" class="dropdown-item">
-                                            企業理念
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="dropdown-item">
-                                            代表メッセージ
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="dropdown-item">
-                                            沿革
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="dropdown-item">
-                                            アクセス
-                                        </a>
-                                    </li>
-                                </ul>
                             </li>
-
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-trigger">
-                                    お客様サポート
-                                    <span class="dropdown-arrow">▼</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="#" class="dropdown-item">
-                                            よくある質問
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="dropdown-item">
-                                            お問い合わせ
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="dropdown-item">
-                                            資料ダウンロード
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="dropdown-item">
-                                            お客様の声
-                                        </a>
-                                    </li>
-                                </ul>
+                            <li>
+                                <a href="#" class="dropdown_item">サポート</a>
                             </li>
                         </ul>
-                    </nav>
-                </div>
-            </header>
-        </div>
+                    </li>
 
-        <div class="container"></div>
+                    <li class="nav_item dropdown">
+                        <a href="#" class="nav_link dropdown_trigger">
+                            会社概要
+                            <span class="dropdown_arrow">▼</span>
+                        </a>
+                        <ul class="dropdown_menu">
+                            <li>
+                                <a href="#" class="dropdown_item">企業理念</a>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown_item">
+                                    代表メッセージ
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown_item">沿革</a>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown_item">アクセス</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav_item dropdown">
+                        <a href="#" class="nav_link dropdown_trigger">
+                            お客様サポート
+                            <span class="dropdown_arrow">▼</span>
+                        </a>
+                        <ul class="dropdown_menu">
+                            <li>
+                                <a href="#" class="dropdown_item">
+                                    よくある質問
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown_item">
+                                    お問い合わせ
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown_item">
+                                    資料ダウンロード
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown_item">お客様の声</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="main">
+            <!-- mv -->
+            <section class="mv">
+                <h1 class="mv_title">UIパターン比較</h1>
+                <p class="mv_text">
+                    UIパターンを比較して、最適なものを選択してください。
+                </p>
+            </section>
+
+            <!-- アコーディオン -->
+            <section class="accordion">
+                <div class="wrap">
+                    <h2 class="title">アコーディオンパターン比較</h2>
+
+                    <!-- パターン1: 他のを閉じる -->
+                    <div class="pattern_section">
+                        <h3 class="pattern_title">
+                            パターン1: 他のを閉じる（一度に1つだけ開く）
+                        </h3>
+                        <div class="accordion accordion_close_others">
+                            <div class="accordion_item">
+                                <div class="accordion_header">
+                                    <h4 class="accordion_title">
+                                        セクション 1
+                                    </h4>
+                                    <span class="accordion_icon">+</span>
+                                </div>
+                                <div class="accordion_content">
+                                    <p class="accordion_text">
+                                        他のセクションをクリックすると閉じます。
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="accordion_item">
+                                <div class="accordion_header">
+                                    <h4 class="accordion_title">
+                                        セクション 2
+                                    </h4>
+                                    <span class="accordion_icon">+</span>
+                                </div>
+                                <div class="accordion_content">
+                                    <p class="accordion_text">
+                                        一度に1つのセクションのみ開きます。
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="accordion_item">
+                                <div class="accordion_header">
+                                    <h4 class="accordion_title">
+                                        セクション 3
+                                    </h4>
+                                    <span class="accordion_icon">+</span>
+                                </div>
+                                <div class="accordion_content">
+                                    <p class="accordion_text">
+                                        新しいセクションを開くと前のセクションが閉じます。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- パターン2: 他のを閉じない -->
+                    <div class="pattern_section">
+                        <h3 class="pattern_title">
+                            パターン2: 他のを閉じない（複数同時に開く）
+                        </h3>
+                        <div class="accordion accordion_keep_open">
+                            <div class="accordion_item">
+                                <div class="accordion_header">
+                                    <h4 class="accordion_title">
+                                        セクション 1
+                                    </h4>
+                                    <span class="accordion_icon">+</span>
+                                </div>
+                                <div class="accordion_content">
+                                    <p class="accordion_text">
+                                        他のセクションをクリックしても閉じません。
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="accordion_item">
+                                <div class="accordion_header">
+                                    <h4 class="accordion_title">
+                                        セクション 2
+                                    </h4>
+                                    <span class="accordion_icon">+</span>
+                                </div>
+                                <div class="accordion_content">
+                                    <p class="accordion_text">
+                                        複数のセクションを同時に開けます。
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="accordion_item">
+                                <div class="accordion_header">
+                                    <h4 class="accordion_title">
+                                        セクション 3
+                                    </h4>
+                                    <span class="accordion_icon">+</span>
+                                </div>
+                                <div class="accordion_content">
+                                    <p class="accordion_text">
+                                        各セクションは独立して開閉します。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- マスク -->
+            <section class="mask">
+                <svg
+                    viewBox="0 0 900 450"
+                    class="mask_svg"
+                    preserveAspectRatio="xMidYMid slice"
+                >
+                    <defs>
+                        <!-- 丸を3つ定義 -->
+                        <clipPath id="circle_clip_1">
+                            <circle cx="150" cy="150" r="120" />
+                        </clipPath>
+                        <clipPath id="circle_clip_2">
+                            <circle cx="450" cy="300" r="120" />
+                        </clipPath>
+                        <clipPath id="circle_clip_3">
+                            <circle cx="750" cy="150" r="120" />
+                        </clipPath>
+                    </defs>
+
+                    <!-- 画像は1枚だけ -->
+                    <image
+                        href="img/yokohama.jpg"
+                        clip-path="url(#circle_clip_1)"
+                        width="900"
+                        height="300"
+                        class="mask_image"
+                    />
+                    <image
+                        href="img/yokohama.jpg"
+                        clip-path="url(#circle_clip_2)"
+                        width="900"
+                        height="300"
+                        class="mask_image"
+                    />
+                    <image
+                        href="img/yokohama.jpg"
+                        clip-path="url(#circle_clip_3)"
+                        width="900"
+                        height="300"
+                        class="mask_image"
+                    />
+                </svg>
+            </section>
+
+            <!-- 固定背景画像 -->
+            <section class="fixed_image">
+                <h2 class="title">固定背景画像</h2>
+                <div class="image image_1"></div>
+                <div class="image image_2"></div>
+                <div class="image image_3"></div>
+            </section>
+        </main>
+
+        <!-- フッター -->
+        <footer class="footer">
+            <p class="footer_text">&copy; 2025 MySite. All rights reserved.</p>
+        </footer>
+
+        <!-- トップへ戻るボタン -->
+        <button class="top_button">
+            <a href="#" class="top_button_link">TOP</a>
+        </button>
     </body>
     <script src="script.js"></script>
 </html>

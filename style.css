@@ -1,3 +1,17 @@
+/* ========================================
+   目次
+   ======================================== */
+
+/* 1. リセット・基本設定
+   2. ヘッダー
+   3. メインコンテンツ
+   4. フッター
+   5. トップボタン */
+
+/* ========================================
+   1. リセット・基本設定
+   ======================================== */
+
 /* リセット */
 * {
     margin: 0;
@@ -10,12 +24,12 @@ body {
     line-height: 1.6;
     color: #333;
     background-color: #f5f5f5;
-    padding: 20px;
+    min-width: 1140px;
 }
 
-.container {
-    max-width: 800px;
-    margin: 50px auto;
+.wrap {
+    max-width: 1140px;
+    margin: 0 auto;
 }
 
 .title {
@@ -26,133 +40,60 @@ body {
     font-weight: bold;
 }
 
-.pattern-section {
-    margin-bottom: 40px;
-    background: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
+/* ========================================
+   2. ヘッダー
+   ======================================== */
 
-.pattern-title {
-    margin-bottom: 15px;
-    color: #2c3e50;
-    font-size: 18px;
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 8px;
-}
+/*----------------------------------------
+   ヘッダー基本設定
+----------------------------------------*/
 
-/* アコーディオン */
-.accordion {
-    background: white;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.accordion-item {
-    border-bottom: 1px solid #eee;
-}
-
-.accordion-item:last-child {
-    border-bottom: none;
-}
-
-.accordion-header {
-    background: #f8f9fa;
-    padding: 15px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background-color 0.3s;
-}
-
-.accordion-header:hover {
-    background: #e9ecef;
-}
-
-.accordion-header .accordion-title {
-    margin: 0;
-    font-size: 16px;
-}
-
-/* パターン別のスタイル */
-.accordion-close-others {
-    border: 2px solid #e74c3c;
-}
-
-.accordion-close-others .accordion-header {
-    background: #e74c3c;
-    color: white;
-}
-
-.accordion-close-others .accordion-header:hover {
-    background: #c0392b;
-}
-
-.accordion-keep-open {
-    border: 2px solid #27ae60;
-}
-
-.accordion-keep-open .accordion-header {
-    background: #27ae60;
-    color: white;
-}
-
-.accordion-keep-open .accordion-header:hover {
-    background: #229954;
-}
-
-.accordion-icon {
-    font-size: 18px;
-    transition: transform 0.3s;
-}
-
-.accordion-item.active .accordion-icon {
-    transform: rotate(45deg);
-}
-
-.accordion-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s, padding 0.3s;
-    padding: 0 15px;
-}
-
-.accordion-item.active .accordion-content {
-    max-height: 200px;
-    padding: 15px;
-}
-
-.accordion-content .accordion-text {
-    margin: 0;
-    color: #666;
-}
-
-/* ヘッダーナビゲーション（CSSのみ） */
 .header {
+    position: fixed;
+    width: 100%;
     background: white;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: sticky;
     top: 0;
+    left: 0;
     z-index: 1000;
+    overflow-x: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
 }
 
-.navbar {
+.header::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+/*----------------------------------------
+   ナビゲーション
+----------------------------------------*/
+
+.header .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1rem 1.5rem;
+    min-width: 1140px;
+    margin: 0 auto;
 }
 
-.nav-brand .brand-link {
+/*----------------------------------------
+   ブランドロゴ
+----------------------------------------*/
+
+.header .nav_brand .brand_link {
     font-size: 1.5rem;
     font-weight: bold;
     color: #2c3e50;
     text-decoration: none;
 }
 
-.nav-menu {
+/*----------------------------------------
+   メニューリスト
+----------------------------------------*/
+
+.header .nav_menu {
     display: flex;
     list-style: none;
     margin: 0;
@@ -160,11 +101,11 @@ body {
     gap: 2rem;
 }
 
-.nav-item {
+.header .nav_item {
     position: relative;
 }
 
-.nav-link {
+.header .nav_link {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -176,21 +117,25 @@ body {
     border-radius: 6px;
 }
 
-.nav-link:hover {
+.header .nav_link:hover {
     color: #3498db;
     background: #f8f9fa;
 }
 
-.dropdown-arrow {
+/*----------------------------------------
+   ドロップダウンメニュー
+----------------------------------------*/
+
+.header .dropdown_arrow {
     font-size: 0.75rem;
     transition: transform 0.3s ease;
 }
 
-.nav-item.dropdown:hover .dropdown-arrow {
+.header .nav_item.dropdown:hover .dropdown_arrow {
     transform: rotate(180deg);
 }
 
-.dropdown-menu {
+.header .dropdown_menu {
     position: absolute;
     top: 100%;
     left: 0;
@@ -208,13 +153,13 @@ body {
     z-index: 1001;
 }
 
-.nav-item.dropdown:hover .dropdown-menu {
+.header .nav_item.dropdown:hover .dropdown_menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
 
-.dropdown-item {
+.header .dropdown_item {
     display: block;
     padding: 0.75rem 1rem;
     color: #333;
@@ -223,103 +168,314 @@ body {
     font-size: 0.9rem;
 }
 
-.dropdown-item:hover {
+.header .dropdown_item:hover {
     background: #f8f9fa;
     color: #3498db;
     padding-left: 1.25rem;
 }
 
-/* detailsタグを使ったアコーディオン（CSSのみ） */
-.details-accordion {
+/* ========================================
+   3. メインコンテンツ
+   ======================================== */
+
+.main {
+    padding-top: 82px;
+}
+
+/*----------------------------------------
+   メインビジュアル
+----------------------------------------*/
+
+.mv {
+    background: #ccc;
+    padding: 100px;
+    border-radius: 5px;
+}
+
+.mv .mv_title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.mv .mv_text {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/*----------------------------------------
+   アコーディオン
+----------------------------------------*/
+
+.accordion {
     background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.details-item {
-    border-bottom: 1px solid #e0e0e0;
+.accordion .pattern_section {
+    margin-bottom: 40px;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.details-item:last-child {
+.accordion .pattern_title {
+    margin-bottom: 15px;
+    color: #2c3e50;
+    font-size: 18px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 8px;
+}
+
+/* アコーディオンアイテム */
+.accordion .accordion_item {
+    border-bottom: 1px solid #eee;
+}
+
+.accordion .accordion_item:last-child {
     border-bottom: none;
 }
 
-.details-summary {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 20px;
+.accordion .accordion_header {
+    background: #f8f9fa;
+    padding: 15px;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: all 0.3s ease;
-    user-select: none;
-    list-style: none;
+    transition: background-color 0.3s;
 }
 
-.details-summary:hover {
-    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
-    transform: translateY(-1px);
+.accordion .accordion_header:hover {
+    background: #e9ecef;
 }
 
-.details-summary::-webkit-details-marker {
-    display: none;
+.accordion .accordion_header .accordion_title {
+    margin: 0;
+    font-size: 16px;
 }
 
-.details-summary::-moz-list-bullet {
-    list-style-type: none;
+/* パターン別のスタイル */
+.accordion .accordion_close_others {
+    border: 2px solid #e74c3c;
 }
 
-.details-title {
-    font-size: 1.2rem;
-    font-weight: 500;
+.accordion .accordion_close_others .accordion_header {
+    background: #e74c3c;
+    color: white;
 }
 
-.details-icon {
-    font-size: 1.5rem;
-    font-weight: bold;
-    transition: transform 0.3s ease;
-    line-height: 1;
+.accordion .accordion_close_others .accordion_header:hover {
+    background: #c0392b;
 }
 
-.details-item[open] .details-icon {
+.accordion .accordion_keep_open {
+    border: 2px solid #27ae60;
+}
+
+.accordion .accordion_keep_open .accordion_header {
+    background: #27ae60;
+    color: white;
+}
+
+.accordion .accordion_keep_open .accordion_header:hover {
+    background: #229954;
+}
+
+/* アコーディオンアイコン */
+.accordion .accordion_icon {
+    font-size: 18px;
+    transition: transform 0.3s;
+}
+
+.accordion .accordion_item.active .accordion_icon {
     transform: rotate(45deg);
 }
 
-.details-content {
-    padding: 20px;
-    background: white;
-    color: #555;
-    line-height: 1.7;
+/* アコーディオンコンテンツ */
+.accordion .accordion_content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s, padding 0.3s;
+    padding: 0 15px;
 }
 
-.details-content p {
-    margin-bottom: 15px;
-}
-
-.details-content ul {
-    margin: 15px 0;
-    padding-left: 20px;
-}
-
-.details-content li {
-    margin-bottom: 8px;
-}
-
-.content-box {
-    background: #f8f9fa;
-    border-left: 4px solid #667eea;
+.accordion .accordion_item.active .accordion_content {
+    max-height: 200px;
     padding: 15px;
-    margin: 15px 0;
-    border-radius: 0 5px 5px 0;
 }
 
-.content-box strong {
-    color: #2c3e50;
+.accordion .accordion_content .accordion_text {
+    margin: 0;
+    color: #666;
+}
+
+/*----------------------------------------
+   マスクセクション
+----------------------------------------*/
+
+.mask .mask_section {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.mask .mask_svg {
+    width: 100%;
+    height: auto;
     display: block;
-    margin-bottom: 8px;
 }
 
-/* カードグリッド */
+.mask .mask_image {
+    width: 100%;
+    height: auto;
+    background-image: url('../img/yokohama.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/*----------------------------------------
+   固定背景画像セクション
+----------------------------------------*/
+
+.fixed_image {
+    width: 800px;
+    height: 1200px;
+    margin: 0 auto;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.fixed_image .title {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.fixed_image .image {
+    width: 100%;
+    height: 200px;
+    background-image: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.9),
+            rgba(0, 0, 0, 0.1)
+        ),
+        url('../img/yokohama.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 2rem;
+}
+
+.fixed_image .image_1 {
+    top: 0;
+}
+
+.fixed_image .image_2 {
+    top: 300px;
+}
+
+.fixed_image .image_3 {
+    top: 600px;
+}
+
+/*----------------------------------------
+   ボタンセクション
+----------------------------------------*/
+
+.button_section {
+    width: 100%;
+    height: 100%;
+    margin: 300px auto;
+    position: relative;
+    z-index: 1000;
+}
+
+.button_section .button_link {
+    display: block;
+    width: 300px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    border-radius: 50px;
+    color: #333;
+    text-decoration: none;
+    margin: 0 auto;
+    position: relative;
+    border: 2px solid #333;
+    transition: all 0.3s ease;
+    background-image: url('../img/icon_button.svg');
+    background-size: 30px 30px;
+    background-position: left 15px center;
+    background-repeat: no-repeat;
+    padding-left: 60px;
+}
+
+.button_section .button_link:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* ========================================
+   4. フッター
+   ======================================== */
+
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.footer .footer_text {
+    margin: 0;
+}
+
+/* ========================================
+   5. トップボタン
+   ======================================== */
+
+.top_button {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    border-radius: 50%;
+    display: none; /* 初期状態は非表示 */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid #333;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.top_button.show {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.top_button_link {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}

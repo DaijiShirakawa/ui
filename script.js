@@ -1,17 +1,17 @@
 // アコーディオンの動作
 document.addEventListener('DOMContentLoaded', function() {
     // パターン1: 他のを閉じる（一度に1つだけ開く）
-    const closeOthersAccordions = document.querySelectorAll('.accordion-close-others .accordion-item');
+    const closeOthersAccordions = document.querySelectorAll('.accordion_close_others .accordion_item');
     
     closeOthersAccordions.forEach(item => {
-        const header = item.querySelector('.accordion-header');
+        const header = item.querySelector('.accordion_header');
         
         header.addEventListener('click', function() {
             const isActive = item.classList.contains('active');
             
             // 同じアコーディオングループ内のすべてのアイテムを閉じる
             const parentAccordion = item.closest('.accordion');
-            const allItemsInGroup = parentAccordion.querySelectorAll('.accordion-item');
+            const allItemsInGroup = parentAccordion.querySelectorAll('.accordion_item');
             
             allItemsInGroup.forEach(accordionItem => {
                 accordionItem.classList.remove('active');
@@ -25,14 +25,88 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // パターン2: 他のを閉じない（複数同時に開く）
-    const keepOpenAccordions = document.querySelectorAll('.accordion-keep-open .accordion-item');
+    const keepOpenAccordions = document.querySelectorAll('.accordion_keep_open .accordion_item');
     
     keepOpenAccordions.forEach(item => {
-        const header = item.querySelector('.accordion-header');
+        const header = item.querySelector('.accordion_header');
         
         header.addEventListener('click', function() {
             // クリックされたアイテムのみをトグル
             item.classList.toggle('active');
+        });
+    });
+});
+
+// ヘッダーの横スクロール機能
+document.addEventListener('DOMContentLoaded', function() {
+    const header = document.querySelector('.header');
+    const navbar = document.querySelector('.navbar');
+    
+    // ヘッダーの横スクロールをコンテンツと同期
+    function syncHeaderScroll() {
+        // ページの横スクロール位置を取得
+        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+        
+        // ヘッダーを同じ位置にスクロール
+        header.scrollLeft = scrollLeft;
+    }
+    
+    // ページの横スクロールイベントを監視
+    window.addEventListener('scroll', syncHeaderScroll);
+    
+    // ヘッダーの横スクロールイベントを監視
+    header.addEventListener('scroll', function() {
+        // ヘッダーがスクロールされたら、ページも同じ位置にスクロール
+        window.scrollTo(header.scrollLeft, window.pageYOffset);
+    });
+    
+    // リサイズ時に同期
+    window.addEventListener('resize', syncHeaderScroll);
+    
+    // 初期同期
+    syncHeaderScroll();
+});
+
+// トップへ戻るボタンのスムーススクロール
+document.addEventListener('DOMContentLoaded', function() {
+    const topButton = document.querySelector('.top_button');
+    const topButtonLink = document.querySelector('.top_button_link');
+    const mv = document.querySelector('.mv');
+    const footer = document.querySelector('.footer');
+    
+    // ボタンの表示/非表示制御
+    function toggleTopButton() {
+        const mvBottom = mv.offsetTop + mv.offsetHeight; // MVの下端位置
+        const footerTop = footer.offsetTop; // フッターの上端位置
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const windowHeight = window.innerHeight; // ウィンドウの高さ
+        
+        // MVを通り過ぎて、フッターが画面に表示されていない場合のみ表示
+        if (scrollTop > mvBottom && scrollTop + windowHeight < footerTop) {
+            topButton.classList.add('show');
+        } else {
+            topButton.classList.remove('show');
+        }
+    }
+    
+    // スクロールイベントでボタンの表示/非表示を制御
+    window.addEventListener('scroll', toggleTopButton);
+    
+    // リサイズイベントでも制御
+    window.addEventListener('resize', toggleTopButton);
+    
+    // 初期状態を設定
+    toggleTopButton();
+    
+    // クリックイベントを追加
+    topButtonLink.addEventListener('click', function(e) {
+        e.preventDefault(); // デフォルトの動作をキャンセル
+        
+        // スムーススクロールでトップへ移動
+        window.scrollTo({
+            top: 0,
+            left: 0, // 横スクロールもリセット
+            behavior: 'smooth'
         });
     });
 });
