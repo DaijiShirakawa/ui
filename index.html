@@ -224,150 +224,155 @@
 
             <!-- マスク -->
             <section class="mask">
-                <svg
-                    viewBox="0 0 900 450"
-                    class="mask_svg"
-                    preserveAspectRatio="xMidYMid slice"
-                >
-                    <defs>
-                        <!-- 丸を3つ定義 -->
-                        <clipPath id="circle_clip_1">
-                            <circle cx="150" cy="150" r="120" />
-                        </clipPath>
-                        <clipPath id="circle_clip_2">
-                            <circle cx="450" cy="300" r="120" />
-                        </clipPath>
-                        <clipPath id="circle_clip_3">
-                            <circle cx="750" cy="150" r="120" />
-                        </clipPath>
-                    </defs>
+                <h2 class="title">マスク</h2>
+                <div class="wrap">
+                    <svg
+                        viewBox="0 0 900 450"
+                        class="mask_svg"
+                        preserveAspectRatio="xMidYMid slice"
+                    >
+                        <defs>
+                            <!-- 丸を3つ定義 -->
+                            <clipPath id="circle_clip_1">
+                                <circle cx="150" cy="150" r="120" />
+                            </clipPath>
+                            <clipPath id="circle_clip_2">
+                                <circle cx="450" cy="300" r="120" />
+                            </clipPath>
+                            <clipPath id="circle_clip_3">
+                                <circle cx="750" cy="150" r="120" />
+                            </clipPath>
+                        </defs>
 
-                    <!-- 画像は1枚だけ -->
-                    <image
-                        href="img/yokohama.jpg"
-                        clip-path="url(#circle_clip_1)"
-                        width="900"
-                        height="300"
-                        class="mask_image"
-                    />
-                    <image
-                        href="img/yokohama.jpg"
-                        clip-path="url(#circle_clip_2)"
-                        width="900"
-                        height="300"
-                        class="mask_image"
-                    />
-                    <image
-                        href="img/yokohama.jpg"
-                        clip-path="url(#circle_clip_3)"
-                        width="900"
-                        height="300"
-                        class="mask_image"
-                    />
-                </svg>
+                        <!-- 画像は1枚だけ -->
+                        <image
+                            href="img/yokohama.jpg"
+                            clip-path="url(#circle_clip_1)"
+                            width="900"
+                            height="300"
+                            class="mask_image"
+                        />
+                        <image
+                            href="img/yokohama.jpg"
+                            clip-path="url(#circle_clip_2)"
+                            width="900"
+                            height="300"
+                            class="mask_image"
+                        />
+                        <image
+                            href="img/yokohama.jpg"
+                            clip-path="url(#circle_clip_3)"
+                            width="900"
+                            height="300"
+                            class="mask_image"
+                        />
+                    </svg>
+                </div>
             </section>
 
             <!-- Swiper スライダー -->
             <section class="swiper_section">
-                <h2 class="title">Swiper スライダー</h2>
                 <div class="wrap">
-                    <div class="swiper_wrap">
-                        <div class="swiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <img
-                                        src="img/yokohama.jpg"
-                                        alt="スライド1"
-                                    />
-                                </div>
-                                <div class="swiper-slide">
-                                    <img
-                                        src="img/yokohama.jpg"
-                                        alt="スライド2"
-                                    />
-                                </div>
-                                <div class="swiper-slide">
-                                    <img
-                                        src="img/yokohama.jpg"
-                                        alt="スライド3"
-                                    />
+                    <h2 class="title">Swiper スライダー</h2>
+                    <div class="wrap">
+                        <div class="swiper_wrap">
+                            <div class="swiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img
+                                            src="img/yokohama.jpg"
+                                            alt="スライド1"
+                                        />
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img
+                                            src="img/yokohama.jpg"
+                                            alt="スライド2"
+                                        />
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img
+                                            src="img/yokohama.jpg"
+                                            alt="スライド3"
+                                        />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="swiper-pagination"></div>
-                        <div class="swiper-button-next">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="17"
-                                height="14.828"
-                                viewBox="0 0 17 14.828"
-                                class="button_arrow_svg"
-                            >
-                                <g
-                                    id="グループ_73"
-                                    data-name="グループ 73"
-                                    transform="translate(-836.56 -1481.226)"
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-button-next">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="17"
+                                    height="14.828"
+                                    viewBox="0 0 17 14.828"
+                                    class="button_arrow_svg"
                                 >
-                                    <path
-                                        id="パス_14"
-                                        data-name="パス 14"
-                                        d="M844.458,1483.64l6,6-6,6"
-                                        transform="translate(2.101 -1)"
-                                        fill="none"
-                                        stroke=""
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                    />
-                                    <path
-                                        id="パス_22"
-                                        data-name="パス 22"
-                                        d="M104.864,1989.505h15"
-                                        transform="translate(732.696 -500.865)"
-                                        fill="none"
-                                        stroke=""
-                                        stroke-linecap="round"
-                                        stroke-width="2"
-                                    />
-                                </g>
-                            </svg>
-                        </div>
-                        <div class="swiper-button-prev">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="17"
-                                height="14.828"
-                                viewBox="0 0 17 14.828"
-                                class="button_arrow_svg"
-                            >
-                                <g
-                                    id="グループ_73"
-                                    data-name="グループ 73"
-                                    transform="translate(-836.56 -1481.226)"
+                                    <g
+                                        id="グループ_73"
+                                        data-name="グループ 73"
+                                        transform="translate(-836.56 -1481.226)"
+                                    >
+                                        <path
+                                            id="パス_14"
+                                            data-name="パス 14"
+                                            d="M844.458,1483.64l6,6-6,6"
+                                            transform="translate(2.101 -1)"
+                                            fill="none"
+                                            stroke=""
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                        />
+                                        <path
+                                            id="パス_22"
+                                            data-name="パス 22"
+                                            d="M104.864,1989.505h15"
+                                            transform="translate(732.696 -500.865)"
+                                            fill="none"
+                                            stroke=""
+                                            stroke-linecap="round"
+                                            stroke-width="2"
+                                        />
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="swiper-button-prev">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="17"
+                                    height="14.828"
+                                    viewBox="0 0 17 14.828"
+                                    class="button_arrow_svg"
                                 >
-                                    <path
-                                        id="パス_14"
-                                        data-name="パス 14"
-                                        d="M844.458,1483.64l6,6-6,6"
-                                        transform="translate(2.101 -1)"
-                                        fill="none"
-                                        stroke=""
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                    />
-                                    <path
-                                        id="パス_22"
-                                        data-name="パス 22"
-                                        d="M104.864,1989.505h15"
-                                        transform="translate(732.696 -500.865)"
-                                        fill="none"
-                                        stroke=""
-                                        stroke-linecap="round"
-                                        stroke-width="2"
-                                    />
-                                </g>
-                            </svg>
+                                    <g
+                                        id="グループ_73"
+                                        data-name="グループ 73"
+                                        transform="translate(-836.56 -1481.226)"
+                                    >
+                                        <path
+                                            id="パス_14"
+                                            data-name="パス 14"
+                                            d="M844.458,1483.64l6,6-6,6"
+                                            transform="translate(2.101 -1)"
+                                            fill="none"
+                                            stroke=""
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                        />
+                                        <path
+                                            id="パス_22"
+                                            data-name="パス 22"
+                                            d="M104.864,1989.505h15"
+                                            transform="translate(732.696 -500.865)"
+                                            fill="none"
+                                            stroke=""
+                                            stroke-linecap="round"
+                                            stroke-width="2"
+                                        />
+                                    </g>
+                                </svg>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -375,8 +380,8 @@
 
             <!-- Slick スライダー -->
             <section class="slick_section">
-                <h2 class="title">Slick スライダー</h2>
                 <div class="wrap">
+                    <h2 class="title">Slick スライダー</h2>
                     <div class="slick_slider">
                         <div class="slick_item">
                             <img src="img/yokohama.jpg" alt="スライド1" />
@@ -469,56 +474,78 @@
 
             <!-- 固定背景画像 -->
             <section class="fixed_image">
-                <h2 class="title">固定背景画像</h2>
-                <div class="image image_1"></div>
-                <div class="image image_2"></div>
-                <div class="image image_3"></div>
+                <div class="wrap">
+                    <h2 class="title">固定背景画像</h2>
+                    <div class="image image_1"></div>
+                    <div class="image image_2"></div>
+                    <div class="image image_3"></div>
+                </div>
             </section>
 
             <!-- ボタン -->
             <section class="button_section">
-                <h2 class="title">ボタン</h2>
-                <div class="button_wrap">
-                    <a href="#" class="button">
-                        <p class="button_text">ボタン</p>
-                        <div class="button_arrow">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="17"
-                                height="14.828"
-                                viewBox="0 0 17 14.828"
-                                class="button_arrow_svg"
-                            >
-                                <g
-                                    id="グループ_73"
-                                    data-name="グループ 73"
-                                    transform="translate(-836.56 -1481.226)"
+                <div class="wrap">
+                    <h2 class="title">ボタン</h2>
+                    <div class="button_wrap">
+                        <a href="#" class="button">
+                            <p class="button_text">ボタン</p>
+                            <div class="button_arrow">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="17"
+                                    height="14.828"
+                                    viewBox="0 0 17 14.828"
+                                    class="button_arrow_svg"
                                 >
-                                    <path
-                                        id="パス_14"
-                                        data-name="パス 14"
-                                        d="M844.458,1483.64l6,6-6,6"
-                                        transform="translate(2.101 -1)"
-                                        fill="none"
-                                        stroke=""
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                    />
-                                    <path
-                                        id="パス_22"
-                                        data-name="パス 22"
-                                        d="M104.864,1989.505h15"
-                                        transform="translate(732.696 -500.865)"
-                                        fill="none"
-                                        stroke=""
-                                        stroke-linecap="round"
-                                        stroke-width="2"
-                                    />
-                                </g>
-                            </svg>
+                                    <g
+                                        id="グループ_73"
+                                        data-name="グループ 73"
+                                        transform="translate(-836.56 -1481.226)"
+                                    >
+                                        <path
+                                            id="パス_14"
+                                            data-name="パス 14"
+                                            d="M844.458,1483.64l6,6-6,6"
+                                            transform="translate(2.101 -1)"
+                                            fill="none"
+                                            stroke=""
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                        />
+                                        <path
+                                            id="パス_22"
+                                            data-name="パス 22"
+                                            d="M104.864,1989.505h15"
+                                            transform="translate(732.696 -500.865)"
+                                            fill="none"
+                                            stroke=""
+                                            stroke-linecap="round"
+                                            stroke-width="2"
+                                        />
+                                    </g>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slickズームスライダー -->
+            <section class="zoom_slider_section">
+                <div class="wrap">
+                    <h2 class="title">Slickズームスライダー</h2>
+                    <div class="slider">
+                        <div class="slick_img">
+                            <img src="img/yokohama.jpg" alt="横浜" />
                         </div>
-                    </a>
+                        <div class="slick_img">
+                            <img src="img/okinawa.jpg" alt="沖縄" />
+                        </div>
+                        <div class="slick_img">
+                            <img src="img/kurokawa.jpg" alt="黒川" />
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
