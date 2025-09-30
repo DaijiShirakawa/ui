@@ -175,110 +175,43 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ========================================
-// フェード画像スライダー
+// Slickズームスライダー（jQuery）
 // ========================================
 
-class FadeSlider {
-    constructor() {
-        this.images = document.querySelectorAll('.fade_image .image');
-        this.currentIndex = 0;
-        this.interval = null;
-        this.init();
-    }
-
-    init() {
-        if (this.images.length === 0) return;
-        
-        // 最初の画像を表示
-        this.images[0].classList.add('active');
-        this.startAutoSlide();
-    }
-
-    startAutoSlide() {
-        this.interval = setInterval(() => {
-            this.nextSlide();
-        }, 5000);
-    }
-
-    stopAutoSlide() {
-        if (this.interval) {
-            clearInterval(this.interval);
-            this.interval = null;
-        }
-    }
-
-    nextSlide() {
-        // 現在の画像をフェードアウト
-        this.images[this.currentIndex].classList.add('fade-out');
-        this.images[this.currentIndex].classList.remove('active');
-
-        // 次の画像のインデックスを計算
-        this.currentIndex = (this.currentIndex + 1) % this.images.length;
-
-        // 次の画像を表示
-        setTimeout(() => {
-            this.images.forEach(img => {
-                img.classList.remove('fade-out');
-            });
-            this.images[this.currentIndex].classList.add('active');
-        }, 10000);
-    }
-}
-
-// フェードスライダーを初期化
-document.addEventListener('DOMContentLoaded', function() {
-    new FadeSlider();
-});
-
-// ========================================
-// Slickズームスライダー（Vanilla JS）
-// ========================================
-
-class ZoomSlider {
-    constructor() {
-        this.slider = document.querySelector('.slider');
-        this.slides = document.querySelectorAll('.slick_img');
-        this.currentIndex = 0;
-        this.interval = null;
-        this.init();
-    }
-
-    init() {
-        if (this.slides.length === 0) return;
-        
+$(document).ready(function() {
+    $('.slider').slick({
+        autoplay: true,
+        autoplaySpeed: 6000,
+        fade: true,
+        arrows: false,
+        dots: false,
+        infinite: true,
+        speed: 2000,
+        pauseOnFocus: false,
+        pauseOnHover: false
+    }).on('init', function() {
         // 最初のスライドにアニメーションを追加
-        this.slides[0].classList.add('add_animation');
-        this.startAutoSlide();
-    }
-
-    startAutoSlide() {
-        this.interval = setInterval(() => {
-            this.nextSlide();
-        }, 4000);
-    }
-
-    stopAutoSlide() {
-        if (this.interval) {
-            clearInterval(this.interval);
-            this.interval = null;
-        }
-    }
-
-    nextSlide() {
-        // 現在のスライドのアニメーションを削除
-        this.slides[this.currentIndex].classList.remove('add_animation');
-
-        // 次のスライドのインデックスを計算
-        this.currentIndex = (this.currentIndex + 1) % this.slides.length;
-
-        // 次のスライドにアニメーションを追加
-        setTimeout(() => {
-            this.slides[this.currentIndex].classList.add('add_animation');
-        }, 100);
-    }
-}
-
-// ズームスライダーを初期化
-document.addEventListener('DOMContentLoaded', function() {
-    new ZoomSlider();
+        $('.slick-slide[data-slick-index="0"]').addClass('add_animation');
+    }).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+        // 表示されているスライドにアニメーションを追加
+        $('.slick-slide', this).eq(nextSlide).addClass('add_animation');
+        // 前のスライドのアニメーションを削除
+        $('.slick-slide', this).eq(currentSlide).removeClass('add_animation');
+    });
 });
+
+// ========================================
+// ローディング画面
+// ========================================
+
+//ローディング画面を取得
+const loading = document.querySelector(".loading");
+
+//ページの読み込み完了時に処理を実行
+window.addEventListener("load", () => {
+  //3秒後にローディング画面を非表示にする
+  setTimeout(() => {
+    loading.classList.add("loaded");
+  }, 3000);
+});
+
