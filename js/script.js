@@ -1,122 +1,151 @@
-// アコーディオンの動作
+// ========================================
+// アコーディオン機能
+// ========================================
+
 document.addEventListener('DOMContentLoaded', function() {
-    // パターン1: 他のを閉じる（一度に1つだけ開く）
-    const closeOthersAccordions = document.querySelectorAll('.accordion_close_others .accordion_item');
-    
-    closeOthersAccordions.forEach(item => {
+    // パターン1: 他のを閉じる
+    const accordionCloseOthers = document.querySelectorAll('.accordion_close_others .accordion_item');
+    accordionCloseOthers.forEach(item => {
         const header = item.querySelector('.accordion_header');
-        
-        header.addEventListener('click', function() {
-            const isActive = item.classList.contains('active');
-            
-            // 同じアコーディオングループ内のすべてのアイテムを閉じる
-            const parentAccordion = item.closest('.accordion');
-            const allItemsInGroup = parentAccordion.querySelectorAll('.accordion_item');
-            
-            allItemsInGroup.forEach(accordionItem => {
-                accordionItem.classList.remove('active');
+        header.addEventListener('click', () => {
+            // 他のアイテムを閉じる
+            accordionCloseOthers.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                }
             });
-            
-            // クリックされたアイテムが閉じていたら開く
-            if (!isActive) {
-                item.classList.add('active');
-            }
+            // 現在のアイテムを切り替え
+            item.classList.toggle('active');
         });
     });
-    
-    // パターン2: 他のを閉じない（複数同時に開く）
-    const keepOpenAccordions = document.querySelectorAll('.accordion_keep_open .accordion_item');
-    
-    keepOpenAccordions.forEach(item => {
+
+    // パターン2: 開いたまま
+    const accordionKeepOpen = document.querySelectorAll('.accordion_keep_open .accordion_item');
+    accordionKeepOpen.forEach(item => {
         const header = item.querySelector('.accordion_header');
-        
-        header.addEventListener('click', function() {
-            // クリックされたアイテムのみをトグル
+        header.addEventListener('click', () => {
             item.classList.toggle('active');
         });
     });
 });
 
-// ヘッダーの横スクロール機能
-document.addEventListener('DOMContentLoaded', function() {
-    const header = document.querySelector('.header');
-    const navbar = document.querySelector('.navbar');
-    
-    // ヘッダーの横スクロールをコンテンツと同期
-    function syncHeaderScroll() {
-        // ページの横スクロール位置を取得
-        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-        
-        // ヘッダーを同じ位置にスクロール
-        header.scrollLeft = scrollLeft;
+// ========================================
+// ヘッダーのスクロール制御
+// ========================================
+
+let lastScrollTop = 0;
+let lastScrollLeft = 0;
+let isHeaderVisible = true;
+
+window.addEventListener("scroll", function () {
+    const header = document.querySelector(".header");
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
+    // 横スクロールの変化を検知
+    const scrollLeftChanged = scrollLeft !== lastScrollLeft;
+    const scrollTopChanged = scrollTop !== lastScrollTop;
+
+    // 横スクロールが発生した場合の処理
+    if (scrollLeftChanged) {
+        // 横スクロール時はtransitionを無効化
+        header.style.transition = "none";
+        if (isHeaderVisible) {
+            header.style.transform = `translateX(-${scrollLeft}px) translateY(0) translateZ(0)`;
+        } else {
+            header.style.transform = `translateX(-${scrollLeft}px) translateY(-100%) translateZ(0)`;
+        }
     }
-    
-    // ページの横スクロールイベントを監視
-    window.addEventListener('scroll', syncHeaderScroll);
-    
-    // ヘッダーの横スクロールイベントを監視
-    header.addEventListener('scroll', function() {
-        // ヘッダーがスクロールされたら、ページも同じ位置にスクロール
-        window.scrollTo(header.scrollLeft, window.pageYOffset);
-    });
-    
-    // リサイズ時に同期
-    window.addEventListener('resize', syncHeaderScroll);
-    
-    // 初期同期
-    syncHeaderScroll();
+
+    // 縦スクロールでヘッダーの表示/非表示を制御
+    if (scrollTop <= 100) {
+        // 上から100px以内 → ヘッダーを表示
+        if (!isHeaderVisible) {
+            header.style.transition = "transform 0.3s ease";
+            header.style.transform = `translateX(-${scrollLeft}px) translateY(0) translateZ(0)`;
+            isHeaderVisible = true;
+        }
+    } else if (scrollTop > lastScrollTop && scrollTop > 100) {
+        // 下にスクロール & 100px以上 → ヘッダーを隠す
+        if (isHeaderVisible) {
+            header.style.transition = "transform 0.3s ease";
+            header.style.transform = `translateX(-${scrollLeft}px) translateY(-100%) translateZ(0)`;
+            isHeaderVisible = false;
+        }
+    } else if (scrollTop < lastScrollTop) {
+        // 上にスクロール → ヘッダーを表示
+        if (!isHeaderVisible) {
+            header.style.transition = "transform 0.3s ease";
+            header.style.transform = `translateX(-${scrollLeft}px) translateY(0) translateZ(0)`;
+            isHeaderVisible = true;
+        }
+    }
+
+    // 前回のスクロール位置を更新
+    lastScrollTop = scrollTop;
+    lastScrollLeft = scrollLeft;
 });
 
-// トップへ戻るボタンのスムーススクロール
+// リサイズ時にも対応
+window.addEventListener("resize", function () {
+    const header = document.querySelector(".header");
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    if (isHeaderVisible) {
+        header.style.transform = `translateX(-${scrollLeft}px) translateY(0) translateZ(0)`;
+    } else {
+        header.style.transform = `translateX(-${scrollLeft}px) translateY(-100%) translateZ(0)`;
+    }
+});
+
+// ========================================
+// トップへ戻るボタン
+// ========================================
+
 document.addEventListener('DOMContentLoaded', function() {
     const topButton = document.querySelector('.top_button');
     const topButtonLink = document.querySelector('.top_button_link');
-    const mv = document.querySelector('.mv');
     const footer = document.querySelector('.footer');
-    
-    // ボタンの表示/非表示制御
+
+    // スクロール位置に応じてボタンの表示/非表示を制御
     function toggleTopButton() {
-        const mvBottom = mv.offsetTop + mv.offsetHeight; // MVの下端位置
-        const footerTop = footer.offsetTop; // フッターの上端位置
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const windowHeight = window.innerHeight; // ウィンドウの高さ
+        const windowHeight = window.innerHeight;
+        const footerTop = footer.offsetTop;
         
-        // MVを通り過ぎて、フッターが画面に表示されていない場合のみ表示
-        if (scrollTop > mvBottom && scrollTop + windowHeight < footerTop) {
+        // 300px以上スクロールしていて、かつフッターが画面に表示されていない場合のみ表示
+        if (scrollTop > 300 && scrollTop + windowHeight < footerTop) {
             topButton.classList.add('show');
         } else {
             topButton.classList.remove('show');
         }
     }
-    
-    // スクロールイベントでボタンの表示/非表示を制御
+
+    // スクロールイベント
     window.addEventListener('scroll', toggleTopButton);
     
     // リサイズイベントでも制御
     window.addEventListener('resize', toggleTopButton);
-    
-    // 初期状態を設定
-    toggleTopButton();
-    
-    // クリックイベントを追加
+
+    // クリックでトップに戻る
     topButtonLink.addEventListener('click', function(e) {
-        e.preventDefault(); // デフォルトの動作をキャンセル
-        
-        // スムーススクロールでトップへ移動
+        e.preventDefault();
         window.scrollTo({
             top: 0,
-            left: 0, // 横スクロールもリセット
             behavior: 'smooth'
         });
     });
 });
 
-// Swiper スライダー初期化
+// ========================================
+// Swiperスライダー
+// ========================================
+
 document.addEventListener('DOMContentLoaded', function() {
-    const swiper = new Swiper('.swiper', {
-        // オプション
-        loop: true,
-        autoplay: false,
+    new Swiper('.swiper', {
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
@@ -125,58 +154,131 @@ document.addEventListener('DOMContentLoaded', function() {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
-        effect: 'slide',
-        speed: 600,
+        loop: true,
     });
 });
 
-// Slick スライダー初期化
-$(document).ready(function() {
+// ========================================
+// Slickスライダー
+// ========================================
+
+document.addEventListener('DOMContentLoaded', function() {
     $('.slick_slider').slick({
         autoplay: true,
         autoplaySpeed: 3000,
-        dots: true, // デフォルトのドットを有効化
+        dots: true,
         infinite: true,
-        speed: 600,
-        slidesToShow: 1,
-        slidesToScroll: 1,
         arrows: true,
-        prevArrow: '.slick_button_prev', // Swiperスタイルのボタンを指定
-        nextArrow: '.slick_button_next', // Swiperスタイルのボタンを指定
+        prevArrow: '.slick_button_prev',
+        nextArrow: '.slick_button_next',
     });
 });
 
-// Slickズームスライダー初期化
-$(function () {
-    $(".slider")
-        // 最初のスライドに"add_animation"のclassを付ける(data-slick-index="0"が最初のスライドを指す)
-        .on("init", function () {
-            $('.slick-slide[data-slick-index="0"]').addClass("add_animation");
-        })
-        // 通常のオプション
-        .slick({
-            autoplay: true, // 自動再生ON
-            fade: true, // フェードON
-            arrows: false, // 矢印OFF
-            speed: 2000, // スライド、フェードアニメーションの速度2000ミリ秒
-            autoplaySpeed: 6000, // 自動再生速度4000ミリ秒
-            pauseOnFocus: false, // フォーカスで一時停止OFF
-            pauseOnHover: false, // マウスホバーで一時停止OFF
-        })
-        .on({
-            // スライドが移動する前に発生するイベント
-            beforeChange: function (event, slick, currentSlide, nextSlide) {
-                // 表示されているスライドに"add_animation"のclassをつける
-                $(".slick-slide", this).eq(nextSlide).addClass("add_animation");
-                // あとで"add_animation"のclassを消すための"remove_animation"classを付ける
-                $(".slick-slide", this).eq(currentSlide).addClass("remove_animation");
-            },
-            // スライドが移動した後に発生するイベント
-            afterChange: function () {
-                // 表示していないスライドはアニメーションのclassを外す
-                $(".remove_animation", this).removeClass(
-                    "remove_animation add_animation"
-                );
-            },
-        });
+// ========================================
+// フェード画像スライダー
+// ========================================
+
+class FadeSlider {
+    constructor() {
+        this.images = document.querySelectorAll('.fade_image .image');
+        this.currentIndex = 0;
+        this.interval = null;
+        this.init();
+    }
+
+    init() {
+        if (this.images.length === 0) return;
+        
+        // 最初の画像を表示
+        this.images[0].classList.add('active');
+        this.startAutoSlide();
+    }
+
+    startAutoSlide() {
+        this.interval = setInterval(() => {
+            this.nextSlide();
+        }, 5000);
+    }
+
+    stopAutoSlide() {
+        if (this.interval) {
+            clearInterval(this.interval);
+            this.interval = null;
+        }
+    }
+
+    nextSlide() {
+        // 現在の画像をフェードアウト
+        this.images[this.currentIndex].classList.add('fade-out');
+        this.images[this.currentIndex].classList.remove('active');
+
+        // 次の画像のインデックスを計算
+        this.currentIndex = (this.currentIndex + 1) % this.images.length;
+
+        // 次の画像を表示
+        setTimeout(() => {
+            this.images.forEach(img => {
+                img.classList.remove('fade-out');
+            });
+            this.images[this.currentIndex].classList.add('active');
+        }, 10000);
+    }
+}
+
+// フェードスライダーを初期化
+document.addEventListener('DOMContentLoaded', function() {
+    new FadeSlider();
+});
+
+// ========================================
+// Slickズームスライダー（Vanilla JS）
+// ========================================
+
+class ZoomSlider {
+    constructor() {
+        this.slider = document.querySelector('.slider');
+        this.slides = document.querySelectorAll('.slick_img');
+        this.currentIndex = 0;
+        this.interval = null;
+        this.init();
+    }
+
+    init() {
+        if (this.slides.length === 0) return;
+        
+        // 最初のスライドにアニメーションを追加
+        this.slides[0].classList.add('add_animation');
+        this.startAutoSlide();
+    }
+
+    startAutoSlide() {
+        this.interval = setInterval(() => {
+            this.nextSlide();
+        }, 4000);
+    }
+
+    stopAutoSlide() {
+        if (this.interval) {
+            clearInterval(this.interval);
+            this.interval = null;
+        }
+    }
+
+    nextSlide() {
+        // 現在のスライドのアニメーションを削除
+        this.slides[this.currentIndex].classList.remove('add_animation');
+
+        // 次のスライドのインデックスを計算
+        this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+
+        // 次のスライドにアニメーションを追加
+        setTimeout(() => {
+            this.slides[this.currentIndex].classList.add('add_animation');
+        }, 100);
+    }
+}
+
+// ズームスライダーを初期化
+document.addEventListener('DOMContentLoaded', function() {
+    new ZoomSlider();
 });

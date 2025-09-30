@@ -644,7 +644,6 @@ body {
 
 .fixed_image {
     width: 800px;
-    height: 1200px;
     margin: 0 auto;
     padding: 150px 0;
 }
@@ -689,9 +688,10 @@ body {
 .button_section {
     width: 100%;
     height: 100%;
-    margin: 300px auto;
+    margin: 0 auto;
     position: relative;
     z-index: 1000;
+    padding: 150px 0;
 }
 
 .button_section .button_wrap {
@@ -782,7 +782,7 @@ body {
     height: 100px;
     background: #fff;
     border-radius: 50%;
-    display: none; /* 初期状態は非表示 */
+    display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
@@ -791,16 +791,15 @@ body {
     outline: none;
     font-size: 20px;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.5s ease;
     border: 2px solid #333;
     opacity: 0;
-    transform: translateY(20px);
+    pointer-events: none;
 }
 
 .top_button.show {
-    display: flex;
     opacity: 1;
-    transform: translateY(0);
+    pointer-events: auto;
 }
 
 .top_button_link {
@@ -848,4 +847,161 @@ body {
 
 .add_animation {
     animation: zoomUp 10s linear 0s normal both;
+}
+
+/* ========================================
+   7. テキストアニメーション
+   ======================================== */
+.text_animation_section {
+    padding: 150px 0;
+}
+
+/* パターン1: 背景色が流れてきて止まる */
+.text_slide_bg {
+    position: relative;
+    width: fit-content;
+    margin: 50px auto;
+}
+
+.text_slide_bg::before {
+    animation: slideBgAnimation 10s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    background: linear-gradient(
+        to right,
+        #362ae0 0%,
+        #3b79cc 50%,
+        #42d3ed 100%
+    );
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: left center;
+}
+
+.text_slide_bg .text_content {
+    color: #fff;
+    display: inline-block;
+    font-size: 36px;
+    font-weight: bold;
+    padding: 20px 40px;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes slideBgAnimation {
+    0% {
+        opacity: 0;
+        transform: scaleX(0) translateX(-5%);
+    }
+    30% {
+        transform: scaleX(1) translateX(0);
+    }
+    100% {
+        transform: scaleX(1) translateX(0);
+    }
+    30%,
+    100% {
+        opacity: 1;
+    }
+}
+
+/* パターン2: 背景色が消えてからテキストが表示される */
+.text_mask_bg {
+    color: transparent;
+    width: fit-content;
+    font-size: 36px;
+    font-weight: bold;
+    padding: 20px 40px;
+    overflow: hidden;
+    position: relative;
+    transition: color 0ms 450ms;
+    width: fit-content;
+    margin: 50px auto;
+    animation: maskColorAnimation 2s cubic-bezier(0.8, 0, 0.17, 1) forwards;
+}
+
+@keyframes maskColorAnimation {
+    0% {
+        color: transparent;
+    }
+    100% {
+        color: #362ae0;
+    }
+}
+
+.text_mask_bg::after {
+    background: linear-gradient(
+        to right,
+        #362ae0 0%,
+        #3b79cc 50%,
+        #42d3ed 100%
+    );
+    bottom: 0;
+    content: '';
+    display: block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateX(-100%);
+    animation: maskBgAnimation 2s cubic-bezier(0.8, 0, 0.17, 1);
+}
+
+@keyframes maskBgAnimation {
+    0% {
+        transform: translateX(-100%);
+    }
+    40%,
+    60% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* パターン3: テキストがループして流れる */
+.text_loop_wrapper {
+    display: flex;
+    width: 100vw;
+    overflow: hidden;
+    margin: 50px calc(50% - 50vw);
+}
+
+.text_loop_wrapper .loop_text {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    font-size: 80px;
+    overflow: hidden;
+    padding-left: 20px;
+    color: #ffa07a;
+    font-weight: bold;
+}
+
+.text_loop_wrapper .loop_text:nth-child(odd) {
+    animation: loopText1 50s -25s linear infinite;
+}
+
+.text_loop_wrapper .loop_text:nth-child(even) {
+    animation: loopText2 50s linear infinite;
+}
+
+@keyframes loopText1 {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes loopText2 {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-200%);
+    }
 }
